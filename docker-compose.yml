@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  weather-api:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+      - WEATHER_API_URL=${WEATHER_API_URL}
+      - DATA_DIR=${DATA_DIR}
+      - CACHE_EXPIRY=${CACHE_EXPIRY}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
